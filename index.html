@@ -3,20 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      margin: 40px auto;
-      max-width: 700px;
       line-height: 1.6;
       font-size: 18px;
       color: #444;
       padding: 0 10px;
     }
+    #phrase {
+      font-size: 32px;
+    }
     h1,h2,h3 {
       line-height: 1.6;
     }
-    #phrase {
-      font-size: 32px;
+    @media screen and (min-width: 600px) {
+      body {
+        margin: 40px auto;
+        max-width: 700px;
+      }
     }
   </style>
   <script>
