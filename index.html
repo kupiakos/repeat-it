@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <style>
+    body {
+      margin: 40px auto;
+      max-width: 700px;
+      line-height: 1.6;
+      font-size: 18px;
+      color: #444;
+      padding: 0 10px;
+    }
+    h1,h2,h3 {
+      line-height: 1.6;
+    }
+    #phrase {
+      font-size: 32px;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var params = new URL(window.location).searchParams;
+      var phrase = params.get("phrase");
+      var rate = params.get("rate") || 500;
+      if (phrase) {
+        document.querySelector("#startup").remove();
+        var phrase_div = document.querySelector("#phrase");
+        var phrase_split = phrase.split(/\s+/);
+        var idx = 0;
+        window.setInterval(function() {
+          phrase_div.innerText += " " + phrase_split[idx];
+          idx++;
+          if (idx >= phrase_split.length) {
+            idx = 0;
+          }
+        }, rate);
+      }
+    });
+  </script>
+</head>
+<body>
+  <form id="startup">
+    <header><h1>Repeat It</h1></header>
+    <span>
+      <p>Phrase: <input type="text" name="phrase"></p>
+      <p>Delay Rate (ms): <input type="number" name="rate" min="1" value="500"></p>
+    </span>
+    <button type="submit">Go</button>
+  </form>
+	<div id="phrase"></div>
+</body>
+</html>
